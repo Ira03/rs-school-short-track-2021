@@ -18,13 +18,45 @@
  */
 
 function removeKFromList(l, k) {
-  const arr = [];
-  for (let i = 0; i < l.length; i++) {
-    if (l[i] !== k) {
-      arr.push(l[i]);
+  let head = l;
+  while (head && head.value === k) {
+    head = head.next;
+  }
+  let current = head;
+  if (current !== null) {
+    while (current.next) {
+      if (current.next.value === k) {
+        current.next = current.next.next;
+      } else {
+        current = current.next;
+      }
     }
   }
-  return arr;
+  // let current = l;
+  // let next = [current.next];
+  // let prev = l;
+  // while (current) {
+  //   if (current.value === k) {
+  //     if (prev) {
+  //       prev.next = next;
+  //       current = next;
+  //       next = current.next;
+  //     } else if (!prev) {
+  //       current = next;
+  //       next = current.next;
+  //     } else if (!next) {
+  //       current = null;
+  //     }
+  //   } else {
+  //     prev = current;
+  //     current = next;
+  //     if (current) {
+  //       next = current.next;
+  //     }
+  //   }
+  // }
+  // return l;
+  return head;
 }
 
 module.exports = removeKFromList;
