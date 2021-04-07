@@ -22,9 +22,8 @@ class Queue {
   }
 
   enqueue(element) {
-    const node = new ListNode();
+    const node = new ListNode(element);
     node.value = element;
-    node.next = null;
     if (!this.tail) {
       this.tail = node;
       this.top = node;
@@ -36,8 +35,8 @@ class Queue {
   }
 
   dequeue() {
-    const node = new ListNode();
-    node.next = null;
+    // const node = new ListNode();
+    // node.next = null;
     if (!this.top) return null;
     const deleted = this.top;
     if (this.top === this.tail) {
